@@ -17,7 +17,8 @@ class ProdutosController extends Controller
      */
     public function index()
     {
-        //
+        $produtos =  produtos::all();
+        return view('produtos.index', compact('produtos'));
     }
 
     /**
@@ -27,7 +28,8 @@ class ProdutosController extends Controller
      */
     public function create()
     {
-        //
+        $produtos =  produtos::all();
+        return view('produtos.create', compact('produtos'));
     }
 
     /**
@@ -36,9 +38,14 @@ class ProdutosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProdutosRequest $request)
     {
-        //
+        $produtos = new produtos();
+        $produtos->nome =  $request->input('descricao');
+        $produtos->sobrenome =  $request->input('complemento');
+        $produtos->telefone =  $request->input('quantidade');
+        $produtos->save();
+        return redirect()->route('produtos.index' , compact('produtos'));
     }
 
     /**

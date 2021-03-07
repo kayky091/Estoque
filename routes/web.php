@@ -16,7 +16,7 @@ use App\Http\Controller\ProdutosController;
 });
 */
 
-Route::resource('pessoa' , 'ProdutosController');
+Route::resource('produtos' , 'ProdutosController');
 
 Auth::routes();
 
