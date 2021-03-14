@@ -17,7 +17,7 @@ use App\Http\Controller\ProdutosController;
 */
 
 Route::resource('produtos' , 'ProdutosController');
-
+Route::get('produtos/delete/{id}', 'ProdutosController@destroy');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
