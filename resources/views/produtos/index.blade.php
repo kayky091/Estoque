@@ -10,6 +10,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">foto</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Complemento</th>
                     <th scope="col">Quantidade</th>
@@ -21,6 +22,7 @@
             @foreach ($produtos as $produto)
                 <tbody>
                     <tr>
+                        <td><img src="/img/fotos/{{ $produto->image}}" alt="" style="width:120px; height:100px; "></td>
                         <td>{{ $produto->id }}</td>
                         <td>{{ $produto->descricao }}</td>
                         <td>{{ $produto->quantidade }}</td>

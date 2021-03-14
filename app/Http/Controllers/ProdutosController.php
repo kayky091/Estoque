@@ -8,6 +8,8 @@ use App\Models\produtos;
 
 use App\Http\Requests\produtosrequest;
 
+
+
 class ProdutosController extends Controller
 {
     
@@ -31,6 +33,21 @@ class ProdutosController extends Controller
         $produtos->descricao =  $request->input('descricao');
         $produtos->complemento =  $request->input('complemento');
         $produtos->quantidade =  $request->input('quantidade');
+
+        //upload imagem
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName());
+
+            $requestImage->move(public_path('img/fotos'), $imageName);
+
+            $produtos->image = $imageName;
+
+        }
         $produtos->save();
         return redirect()->route('produtos.index' , compact('produtos'));
     }
@@ -74,4 +91,6 @@ class ProdutosController extends Controller
        }
        return redirect()->route('produtos.index');
     }
+
+   
 }
