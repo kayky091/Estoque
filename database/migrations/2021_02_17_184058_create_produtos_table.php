@@ -15,11 +15,11 @@ class CreateProdutosTable extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('forn_id')->unsigned();
+            $table->foreign('forn_id')->references('id')->on('fornecedores')->onDelete("cascade");
             $table->string('descricao');
             $table->string('complemento');
             $table->string('quantidade');
-            $table->unsignedBigInteger('forn_id')->unsigned();
-            $table->foreign('forn_id')->references('id')->on('fornecedores')->onDelete("cascade");
             $table->timestamps();
         });
     }

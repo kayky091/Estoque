@@ -22,6 +22,16 @@
                 <label for="image">Foto</label>
                 <input type="file" class="form-control-file" id="image" name="image">
             </div>
+            <div class="form-group col-6">
+                <label for="forn_id">forn_id</label>
+                <select class="form-control" name="forn_id" id="forn_id">
+                    <option value="">selecione:</option>
+                    @foreach ($fornecedores as $fornecedor)
+                        <option value="{{ $fornecedor->id }}"> {{ $fornecedor->nome_fantasia }}</option>
+                    @endforeach
+
+                </select>
+            </div>
 
             <button type="submit" class="btn btn-primary">Salvar</button>
         </form>

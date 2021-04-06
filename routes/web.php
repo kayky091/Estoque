@@ -18,6 +18,10 @@ use App\Http\Controller\ProdutosController;
 
 Route::resource('produtos' , 'ProdutosController');
 Route::get('produtos/delete/{id}', 'ProdutosController@destroy');
+
+Route::resource('fornecedores' , 'FornecedorController');
+Route::get('fornecedores/delete/{id}', 'FornecedorController@destroy');
+
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+
